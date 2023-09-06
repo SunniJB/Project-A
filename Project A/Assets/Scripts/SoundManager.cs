@@ -1,23 +1,22 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class SoundManager : MonoBehaviour
 {
-    public List<AudioClip> soundClips;
-    public AudioSource audioSource;
-    public AudioClip currentClip;
+    [SerializeField] private List<AudioClip> soundClips;
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip currentClip;
     private void Start()
     {
-        audioSource = gameObject.GetComponent<AudioSource>();
+        gameObject.TryGetComponent<AudioSource>(out audioSource);
     }
 
     public void PlaySound(string soundName)
     {
-        Debug.Log("Sound name is " + soundName);
         for (int i = 0; i < soundClips.Count; i++)
         {
-            Debug.Log("Clip name is " + soundClips[i].name);
             if (soundClips[i].name == soundName)
             {
                 currentClip = soundClips[i];
