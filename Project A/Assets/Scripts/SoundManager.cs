@@ -6,24 +6,33 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] private List<AudioClip> soundClips;
+    private Dictionary<string, AudioClip> soundDictionary = new Dictionary<string, AudioClip>();
     private AudioSource audioSource;
     [SerializeField] private AudioClip currentClip;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     private void Start()
     {
+        foreach (var clip in soundClips)
+        {
+            soundDictionary[clip.name] = clip;
+        }
         gameObject.TryGetComponent<AudioSource>(out audioSource);
     }
 
     public void PlaySound(string soundName)
     {
-        for (int i = 0; i < soundClips.Count; i++)
+        if (soundDictionary.TryGetValue(soundName, out AudioClip clipToPlay))
         {
-            if (soundClips[i].name == soundName)
-            {
-                currentClip = soundClips[i];
-                audioSource.clip = currentClip;
-                audioSource.Play();
-                return;
-            }
+            audioSource.clip = clipToPlay;
+            audioSource.Play();
+        }
+        else
+        {
+            Debug.LogWarning($"Sound with name {soundName} not found!");
         }
     }
 }
