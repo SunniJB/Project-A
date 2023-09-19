@@ -12,10 +12,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip currentClip;
 
     [SerializeField] Slider volumeSlider;
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
+
     private void Start()
     {
         foreach (var clip in soundClips)

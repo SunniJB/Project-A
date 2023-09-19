@@ -5,13 +5,14 @@ public class Settings : MonoBehaviour
 {
     public int controlScheme;
     public Animator keysAnimator;
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
 
     public void ChangeControlScheme()
     {
+        if (keysAnimator == null)
+        {
+            Debug.Log("Keys animator is empty");
+            keysAnimator = GameObject.Find("ControlKeys").GetComponent<Animator>();
+        }
         if (controlScheme == 0) 
         { 
             controlScheme = 1;

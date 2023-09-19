@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float maxSpeed = 3.4f;
+    public float gravityScale = 1.5f;
     public Camera mainCamera;
 
     bool facingRight = true;
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
         r2d = GetComponent<Rigidbody2D>();
         mainCollider = GetComponent<CapsuleCollider2D>();
         r2d.freezeRotation = true;
+        r2d.gravityScale = gravityScale;
         r2d.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         facingRight = t.localScale.x > 0;
 
@@ -79,11 +81,18 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        // Apply movement velocity
+        r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
 
         // Camera follow
         if (mainCamera)
         {
             mainCamera.transform.position = new Vector3(t.position.x, cameraPos.y, cameraPos.z);
+        }
+
+        if (Input.GetKeyUp(leftKey) || Input.GetKeyUp(rightKey))
+        {
+            r2d.velocity = Vector2.zero;
         }
     }
 
