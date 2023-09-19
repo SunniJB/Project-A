@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine. UI;
 
 [RequireComponent(typeof(AudioSource))]
 
@@ -10,6 +11,7 @@ public class SoundManager : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] private AudioClip currentClip;
 
+    [SerializeField] Slider volumeSlider;
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -34,5 +36,10 @@ public class SoundManager : MonoBehaviour
         {
             Debug.LogWarning($"Sound with name {soundName} not found!");
         }
+    }
+
+    public void ChangeVolume()
+    {
+        AudioListener.volume = volumeSlider.value;
     }
 }
