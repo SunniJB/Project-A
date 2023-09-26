@@ -23,7 +23,6 @@ public class DialogueController : MonoBehaviour
         bottomPanel.SetActive(true);
         if (place < currentDialogue.Count)
         {
-            Debug.Log("Place is currently " + place + " and list count is " + currentDialogue.Count);
             textBox.text = currentDialogue[place];
         }
         else

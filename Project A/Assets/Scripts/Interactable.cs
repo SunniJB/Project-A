@@ -6,6 +6,7 @@ public class Interactable : MonoBehaviour
 {
     [SerializeField] private GameObject interactKey;
     [SerializeField] private bool canInteract;
+    [Header("For talkables")]
     public List<string> dialogueLines;
     [SerializeField] DialogueController dialogueController;
     public Sprite talkableSprite;
@@ -54,7 +55,8 @@ public class Interactable : MonoBehaviour
         }
         if (gameObject.tag == "Item")
         {
-            //Inventory logic
+            Debug.Log("Item is interacted with");
+            gameObject.GetComponent<Item>().OnPickup();
         }
         if (gameObject.tag == "InteractSpot")
         {
