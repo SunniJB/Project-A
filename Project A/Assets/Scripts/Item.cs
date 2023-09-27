@@ -4,14 +4,8 @@ public class Item : MonoBehaviour
 {
     [SerializeField] public Sprite itemSprite;
     [SerializeField] private InventoryController inventoryController;
-    private void Start()
-    {
-        //Item has a sprite. Put the sprite in the first inventory slot. If first inventory slot is taken, put in the next available.
-        // remove item from its place on the ground.
 
-    }
-
-    public void OnPickup()
+    public void OnPickup() //Tell the inventory to fill the first available spot, then delete the item from the ground
     {
         inventoryController.FillSlot(itemSprite);
         Destroy(gameObject);

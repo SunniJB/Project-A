@@ -672,6 +672,7 @@ MonoBehaviour:
   - {fileID: 357143842}
   - {fileID: 1272121022}
   - {fileID: 1535205035}
+  failedToFindItem: 0
 --- !u!4 &139586426
 Transform:
   m_ObjectHideFlags: 0
@@ -823,7 +824,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemSprite: {fileID: 207950259}
-  slotIndex: 1
   filled: 0
 --- !u!1 &270400432
 GameObject:
@@ -1094,7 +1094,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemSprite: {fileID: 357143845}
-  slotIndex: 3
   filled: 0
 --- !u!1001 &392022139
 PrefabInstance:
@@ -2183,9 +2182,12 @@ GameObject:
   m_Component:
   - component: {fileID: 924531508}
   - component: {fileID: 924531507}
+  - component: {fileID: 924531510}
+  - component: {fileID: 924531509}
+  - component: {fileID: 924531511}
   m_Layer: 0
-  m_Name: Placeholder_0004_Leash
-  m_TagString: Untagged
+  m_Name: Leash
+  m_TagString: InteractSpot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2250,13 +2252,83 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 924531506}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.158, y: 0.27, z: 0}
+  m_LocalPosition: {x: 1.012, y: -0.252, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1223027714}
-  m_RootOrder: -1
+  m_Children:
+  - {fileID: 987476349}
+  - {fileID: 1210358271}
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &924531509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924531506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e3f395c8e9259498a0a4e1c747bbd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactKey: {fileID: 987476350}
+  canInteract: 0
+  dialogueLines:
+  - That's my leash!
+  - Woof, I wish I could go outside right now.
+  - Maybe I could use this, I just have to find the right thing...
+  dialogueController: {fileID: 303010262}
+  talkableSprite: {fileID: 21300000, guid: c4e14484293d8fa4cb18d684d92a0396, type: 3}
+  correctItemSprite: {fileID: 21300000, guid: e1f78e4363ac985499a24c1a9656b1be, type: 3}
+  inventoryController: {fileID: 139586425}
+--- !u!61 &924531510
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924531506}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.07566574, y: -0.050443828}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.35, y: 0.31}
+    newSize: {x: 0.35, y: 0.31}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5013315, y: 0.41088766}
+  m_EdgeRadius: 0
+--- !u!95 &924531511
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924531506}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5aa40204dd1e7374ca1df3452b1230ad, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &946687133
 GameObject:
   m_ObjectHideFlags: 0
@@ -2366,6 +2438,8 @@ MonoBehaviour:
   - this is the last dialogue line
   dialogueController: {fileID: 303010262}
   talkableSprite: {fileID: 21300000, guid: 32d7f14d7d0dc0b47974609c719fc881, type: 3}
+  correctItemSprite: {fileID: 0}
+  inventoryController: {fileID: 0}
 --- !u!61 &946687137
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2392,6 +2466,79 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
+--- !u!1001 &987476348
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 924531508}
+    m_Modifications:
+    - target: {fileID: 107159764243548957, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+      propertyPath: m_Name
+      value: Interactkey
+      objectReference: {fileID: 0}
+    - target: {fileID: 107159764243548957, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613490297697983647, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613490297697983647, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.013
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613490297697983647, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.255
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613490297697983647, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613490297697983647, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613490297697983647, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613490297697983647, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613490297697983647, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613490297697983647, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613490297697983647, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613490297697983647, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+--- !u!4 &987476349 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7613490297697983647, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+  m_PrefabInstance: {fileID: 987476348}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &987476350 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 107159764243548957, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+  m_PrefabInstance: {fileID: 987476348}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1132004640
 GameObject:
   m_ObjectHideFlags: 0
@@ -2497,6 +2644,8 @@ MonoBehaviour:
   dialogueLines: []
   dialogueController: {fileID: 0}
   talkableSprite: {fileID: 0}
+  correctItemSprite: {fileID: 0}
+  inventoryController: {fileID: 0}
 --- !u!61 &1132004644
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2968,11 +3117,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210358269}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.625, y: 0.34900004, z: 0}
+  m_LocalPosition: {x: 0.482, y: 0.07900003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1223027714}
+  m_Father: {fileID: 924531508}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1216696165 stripped
@@ -3011,8 +3160,6 @@ Transform:
   - {fileID: 760571096}
   - {fileID: 796822085}
   - {fileID: 1481570117}
-  - {fileID: 924531508}
-  - {fileID: 1210358271}
   - {fileID: 608858554}
   - {fileID: 540663908}
   - {fileID: 270400434}
@@ -3242,7 +3389,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemSprite: {fileID: 1272121025}
-  slotIndex: 4
   filled: 0
 --- !u!1 &1369736386
 GameObject:
@@ -3837,7 +3983,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemSprite: {fileID: 1535205038}
-  slotIndex: 5
   filled: 0
 --- !u!1 &1640628040
 GameObject:
@@ -4173,7 +4318,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemSprite: {fileID: 1995152143}
-  slotIndex: 2
   filled: 0
 --- !u!1 &2004053554
 GameObject:
