@@ -1,12 +1,13 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Interactable : MonoBehaviour
 {
-    [SerializeField] private GameObject interactKey;
+    [SerializeField] private GameObject interactKey, objectiveTextBox;
     [SerializeField] private bool canInteract;
+    [SerializeField] GameManager gameManager;
+    public string newObjectiveText;
     [Header("For talkables")]
     public List<string> dialogueLines;
     [SerializeField] DialogueController dialogueController;
@@ -17,8 +18,8 @@ public class Interactable : MonoBehaviour
 
     private void Start()
     {
-        interactKey = transform.GetChild(0).gameObject;
-        if (dialogueController == null ) 
+        interactKey = transform.GetChild(0).gameObject; //get the little "Press E" prompt
+        if (dialogueController == null) //Failsafe, everything is assigned in the inspector but just in case
         {
             dialogueController = GameObject.Find("DialogueController").GetComponent<DialogueController>();
         }
@@ -26,6 +27,9 @@ public class Interactable : MonoBehaviour
         {
             inventoryController = GameObject.Find("InventoryController").GetComponent<InventoryController>();
         }
+
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        objectiveTextBox = GameObject.Find("ObjectiveText");
     }
 
     private void Update()
@@ -78,11 +82,17 @@ public class Interactable : MonoBehaviour
                 dialogueController.bottompanelSprite.sprite = talkableSprite;
                 dialogueController.ActivateDialogue();
                 inventoryController.failedToFindItem = false;
-                return;
             } else if (inventoryController.failedToFindItem == false)
             {
                 gameObject.GetComponent<Animator>().SetTrigger("ItemUsed");
             }
         }
+        if (newObjectiveText != null) 
+        {
+            gameManager.objectiveTextBox = objectiveTextBox;
+            gameManager.ChangeObjective(newObjectiveText);
+        }
     }
+
+
 }

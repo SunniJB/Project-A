@@ -4,6 +4,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject pauseCanvas, title, subtitle;
+    public GameObject objectiveTextBox;
     private bool paused = false;
     void Update()
     {
@@ -28,5 +29,10 @@ public class GameManager : MonoBehaviour
     {
         pauseCanvas.SetActive(false);
         Time.timeScale = 1;
+    }
+
+    public void ChangeObjective(string newObjective)
+    {
+        objectiveTextBox.GetComponent<TextMeshProUGUI>().text = newObjective;
     }
 }

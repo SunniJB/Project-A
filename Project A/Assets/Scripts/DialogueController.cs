@@ -7,7 +7,7 @@ public class DialogueController : MonoBehaviour
 {
     public List<string> currentDialogue;
     [SerializeField] TextMeshProUGUI textBox;
-    [SerializeField] int place;
+    [SerializeField] int place; //Place is your current place in the dialogue, like index but this was more understandable to me
     [SerializeField] GameObject bottomPanel;
     public Image bottompanelSprite;
 
@@ -39,7 +39,7 @@ public class DialogueController : MonoBehaviour
 
     public void EndDialogue()
     {
-        Debug.Log("Dialogue ended");
+        place = 0;
         bottomPanel.SetActive(false);
     }
 }

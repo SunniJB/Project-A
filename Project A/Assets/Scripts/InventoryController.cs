@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.U2D;
 using UnityEngine.UI;
 
 public class InventoryController : MonoBehaviour
@@ -23,11 +21,11 @@ public class InventoryController : MonoBehaviour
         }
     }
 
-    public void CheckForitem(Sprite correctSprite) //Look through the inventory spots to see what's there.
+    public void CheckForitem(Sprite correctSprite) //Look through the inventory spots to see what's there. InteractSpots tell this script what its looking for.
     {
         for (var i = 0; i < itemSlots.Length; i++)
         {
-            if (itemSlots[i].GetComponent<Image>().sprite == correctSprite)
+            if (itemSlots[i].GetComponent<Image>().sprite == correctSprite) //if the item the interactSpot is looking for is found
             {
                 failedToFindItem = false;
                 return;

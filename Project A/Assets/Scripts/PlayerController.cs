@@ -12,22 +12,21 @@ public class PlayerController : MonoBehaviour
     bool facingRight = true;
     float moveDirection = 0;
     Vector3 cameraPos;
-    Rigidbody2D r2d;
+    Rigidbody2D playerRigidbody;
     CapsuleCollider2D mainCollider;
     Transform t;
 
     public KeyCode leftKey, rightKey;
     [SerializeField] private Settings settings;
 
-    // Use this for initialization
     void Start()
     {
         t = transform;
-        r2d = GetComponent<Rigidbody2D>();
+        playerRigidbody = GetComponent<Rigidbody2D>();
         mainCollider = GetComponent<CapsuleCollider2D>();
-        r2d.freezeRotation = true;
-        r2d.gravityScale = gravityScale;
-        r2d.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+        playerRigidbody.freezeRotation = true;
+        playerRigidbody.gravityScale = gravityScale;
+        playerRigidbody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         facingRight = t.localScale.x > 0;
 
         if (mainCamera)
@@ -50,7 +49,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Movement controls
@@ -60,14 +58,14 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (r2d.velocity.magnitude < 0.01f)
+            if (playerRigidbody.velocity.magnitude < 0.01f)
             {
                 moveDirection = 0;
             }
         }
 
-        // Change facing direction
-        if (moveDirection != 0)
+        //Just flip the character around when you walk
+        if (moveDirection != 0) 
         {
             if (moveDirection > 0 && !facingRight)
             {
@@ -82,9 +80,9 @@ public class PlayerController : MonoBehaviour
         }
 
         // Apply movement velocity
-        r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
+        playerRigidbody.velocity = new Vector2((moveDirection) * maxSpeed, playerRigidbody.velocity.y);
 
-        // Camera follow
+        //Make the camera follow the player
         if (mainCamera)
         {
             mainCamera.transform.position = new Vector3(t.position.x, cameraPos.y, cameraPos.z);
@@ -92,7 +90,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyUp(leftKey) || Input.GetKeyUp(rightKey))
         {
-            r2d.velocity = Vector2.zero;
+            playerRigidbody.velocity = Vector2.zero;
         }
     }
 

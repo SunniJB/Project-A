@@ -623,7 +623,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 8.378571, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2274,7 +2274,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactKey: {fileID: 987476350}
+  objectiveTextBox: {fileID: 0}
   canInteract: 0
+  gameManager: {fileID: 0}
+  newObjectiveText: 
   dialogueLines:
   - That's my leash!
   - Woof, I wish I could go outside right now.
@@ -2408,8 +2411,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 946687133}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.11, y: -0.27, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.154, y: -0.301, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1216696165}
@@ -2429,13 +2432,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactKey: {fileID: 0}
+  objectiveTextBox: {fileID: 0}
   canInteract: 0
+  gameManager: {fileID: 0}
+  newObjectiveText: 
   dialogueLines:
-  - Hello
-  - This is a test
-  - ill fight u irl
-  - try me bruv
-  - this is the last dialogue line
+  - Hello, pup.
+  - Once again you grace me with your presence.
+  - Run along, now.
+  - I need my thinking time. In peace.
   dialogueController: {fileID: 303010262}
   talkableSprite: {fileID: 21300000, guid: 32d7f14d7d0dc0b47974609c719fc881, type: 3}
   correctItemSprite: {fileID: 0}
@@ -2640,7 +2645,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactKey: {fileID: 0}
+  objectiveTextBox: {fileID: 0}
   canInteract: 0
+  gameManager: {fileID: 0}
+  newObjectiveText: 
   dialogueLines: []
   dialogueController: {fileID: 0}
   talkableSprite: {fileID: 0}
@@ -3984,6 +3992,74 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSprite: {fileID: 1535205038}
   filled: 0
+--- !u!1001 &1537608114
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 1755830705}
+    m_Modifications:
+    - target: {fileID: 107159764243548957, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+      propertyPath: m_Name
+      value: Interactkey
+      objectReference: {fileID: 0}
+    - target: {fileID: 107159764243548957, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613490297697983647, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613490297697983647, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613490297697983647, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.255
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613490297697983647, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613490297697983647, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613490297697983647, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613490297697983647, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613490297697983647, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613490297697983647, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613490297697983647, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613490297697983647, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+--- !u!4 &1537608115 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7613490297697983647, guid: 504d0983b6bed0445a22799f93daa973, type: 3}
+  m_PrefabInstance: {fileID: 1537608114}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1640628040
 GameObject:
   m_ObjectHideFlags: 0
@@ -4182,6 +4258,172 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1741192862}
   m_CullTransparentMesh: 1
+--- !u!1 &1755830701
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1755830705}
+  - component: {fileID: 1755830704}
+  - component: {fileID: 1755830703}
+  - component: {fileID: 1755830702}
+  - component: {fileID: 1755830706}
+  m_Layer: 0
+  m_Name: Snowball
+  m_TagString: Talkable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1755830702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755830701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e3f395c8e9259498a0a4e1c747bbd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactKey: {fileID: 0}
+  objectiveTextBox: {fileID: 0}
+  canInteract: 0
+  gameManager: {fileID: 0}
+  newObjectiveText: Use [B] to bark at Snowball
+  dialogueLines:
+  - Looks like the humans left. They're busy, aren't they?
+  - Maybe this time they've left for good. Who knows?
+  - Doesn't it feel like they've been gone for hours already?
+  - Maybe years?
+  - It doesn't bother me. I have my toilet indoors and my food bowl fills itself.
+  - You though? Oh, you're in trouble, little pup.
+  - If only you had the thumbs to open the door in the kitchen.
+  - Seems kinda dumb to have your bathroom outside, now that you think about it?
+  - 'That''s your problem, though. '
+  - Don't you start [B]arking at me to fix your problems.
+  dialogueController: {fileID: 303010262}
+  talkableSprite: {fileID: 21300000, guid: 54555d7eb916f934198867e7dd818395, type: 3}
+  correctItemSprite: {fileID: 0}
+  inventoryController: {fileID: 0}
+--- !u!95 &1755830703
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755830701}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bc5c149f64647b547bb777d3639776f8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!212 &1755830704
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755830701}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: fa831b99cf195814eab4eced4c9ee6b3, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.32, y: 0.32}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &1755830705
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755830701}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.033, y: -0.042, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1537608115}
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1755830706
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755830701}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.244371}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.32, y: 0.32}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.32, y: 0.80874205}
+  m_EdgeRadius: 0
 --- !u!1 &1995152140
 GameObject:
   m_ObjectHideFlags: 0
