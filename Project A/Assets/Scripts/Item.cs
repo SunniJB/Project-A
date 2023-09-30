@@ -8,6 +8,6 @@ public class Item : MonoBehaviour
     public void OnPickup() //Tell the inventory to fill the first available spot, then delete the item from the ground
     {
         inventoryController.FillSlot(itemSprite);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

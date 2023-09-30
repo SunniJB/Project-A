@@ -18,6 +18,11 @@ public class PlayerController : MonoBehaviour
 
     public KeyCode leftKey, rightKey;
     [SerializeField] private Settings settings;
+    private SoundManager soundManager;
+
+    [SerializeField] int state; //Used for controlling Snowball's animator
+    private bool snowballCanBeInteracted;
+    private Interactable snowballScript;
 
     void Start()
     {
@@ -28,6 +33,8 @@ public class PlayerController : MonoBehaviour
         playerRigidbody.gravityScale = gravityScale;
         playerRigidbody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         facingRight = t.localScale.x > 0;
+
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
 
         if (mainCamera)
         {
@@ -55,12 +62,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(leftKey) || Input.GetKey(rightKey))
         {
             moveDirection = Input.GetKey(leftKey) ? -1 : 1;
+            gameObject.GetComponent<AudioSource>().mute = false;
         }
         else
         {
             if (playerRigidbody.velocity.magnitude < 0.01f)
             {
                 moveDirection = 0;
+                gameObject.GetComponent<AudioSource>().mute = true;
             }
         }
 
@@ -91,6 +100,44 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(leftKey) || Input.GetKeyUp(rightKey))
         {
             playerRigidbody.velocity = Vector2.zero;
+        }
+
+        if (snowballCanBeInteracted && Input.GetKeyUp(KeyCode.B))
+        {
+            soundManager.PlaySound("Dog Barks 3");
+            state += 1; 
+            snowballScript.gameObject.GetComponent<Animator>().SetInteger("State", state);
+        }
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) //Check if we're colliding with Snowball the cat specifically
+    {
+        if (collision.gameObject.TryGetComponent<Interactable>(out snowballScript))
+        {
+            if (snowballScript.gameObject.CompareTag("Talkable"))
+            {
+                if (snowballScript.talkableSprite.name == "SnowballStanding")
+                {
+                    snowballCanBeInteracted = true;
+                }
+            }
+
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.TryGetComponent<Interactable>(out snowballScript))
+        {
+            if (snowballScript.gameObject.CompareTag("Talkable"))
+            {
+                if (snowballScript.talkableSprite.name == "SnowballStanding")
+                {
+                    snowballCanBeInteracted = false;
+                }
+            }
+
         }
     }
 

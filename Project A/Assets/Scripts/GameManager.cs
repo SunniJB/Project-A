@@ -1,9 +1,10 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject pauseCanvas, title, subtitle;
+    [SerializeField] GameObject pauseCanvas, title, subtitle, winCanvas, loseCanvas, soundManager;
     public GameObject objectiveTextBox;
     private bool paused = false;
     void Update()
@@ -20,7 +21,6 @@ public class GameManager : MonoBehaviour
     public void Pause()
     {
         pauseCanvas.SetActive(true);
-        Time.timeScale = 0;
         title.GetComponent<TextMeshProUGUI>().text = "Game paused";
         subtitle.SetActive(true);
     }
@@ -28,11 +28,25 @@ public class GameManager : MonoBehaviour
     public void Unpause()
     {
         pauseCanvas.SetActive(false);
-        Time.timeScale = 1;
     }
 
     public void ChangeObjective(string newObjective)
     {
         objectiveTextBox.GetComponent<TextMeshProUGUI>().text = newObjective;
+    }
+
+    public void Win()
+    {
+        winCanvas.SetActive(true);
+        soundManager.GetComponent<SoundManager>().PlaySound("Win Sound");
+    }
+    public void Lose()
+    {
+
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(0);
     }
 }

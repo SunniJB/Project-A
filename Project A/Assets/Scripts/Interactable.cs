@@ -87,7 +87,7 @@ public class Interactable : MonoBehaviour
                 gameObject.GetComponent<Animator>().SetTrigger("ItemUsed");
             }
         }
-        if (newObjectiveText != null) 
+        if (newObjectiveText != null)
         {
             gameManager.objectiveTextBox = objectiveTextBox;
             gameManager.ChangeObjective(newObjectiveText);
